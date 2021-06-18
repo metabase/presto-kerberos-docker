@@ -84,6 +84,9 @@ http-server.https.keystore.key=${JKS_KEYSTORE_PASS}
 node.internal-address-source=FQDN
 EOL
 
+log "Adding test_data catalog with memory connector"
+echo "connector.name=memory" > /usr/lib/presto/etc/catalog/test_data.properties
+
 cat "${PRESTO_CONFIG}"
 log "Waiting for keytab ${KRB5_KTNAME}"
 check_service "Keytab" "test -f ${KRB5_KTNAME}" 30
