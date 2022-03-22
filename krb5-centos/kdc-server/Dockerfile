@@ -16,7 +16,7 @@ RUN cd /etc/yum.repos.d/ &&  \
 RUN dnf -y install curl wget && dnf clean all
 
 # fforego
-RUN curl -O https://bin.equinox.io/c/ekMN3bCZFUn/forego-stable-linux-amd64.tgz && \
+RUN curl -O https://github.com/metabase/forego/releases/download/stable/forego-stable-linux-amd64.tgz && \
     tar xf forego-stable-linux-amd64.tgz && \
     mv forego /usr/local/bin/forego
 
