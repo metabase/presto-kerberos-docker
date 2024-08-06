@@ -19,7 +19,7 @@ fi
 
 function send_query {
   SQL="${1}"
-  RESPONSE="$(docker-compose run --rm -e KRB5_TRACE=/dev/null machine-example-com bash -c "
+  RESPONSE="$(docker compose run --rm -e KRB5_TRACE=/dev/null machine-example-com bash -c "
   kinit -k bob@EXAMPLE.COM &>/dev/null;
   curl -X POST \
     --insecure \
@@ -35,7 +35,7 @@ function send_query {
   echo "${RESPONSE}" | jq .
 
   while [[ "${STATE}" == "QUEUED" ]]; do
-    RESPONSE="$(docker-compose run --rm -e KRB5_TRACE=/dev/null machine-example-com bash -c "
+    RESPONSE="$(docker compose run --rm -e KRB5_TRACE=/dev/null machine-example-com bash -c "
     kinit -k bob@EXAMPLE.COM &>/dev/null;
     curl -X GET \
       --insecure \
@@ -51,7 +51,7 @@ function send_query {
     exit 1
   fi
   while [[ ! "${NEXT_URL}" == "null" ]]; do
-    RESPONSE="$(docker-compose run --rm -e KRB5_TRACE=/dev/null machine-example-com bash -c "
+    RESPONSE="$(docker compose run --rm -e KRB5_TRACE=/dev/null machine-example-com bash -c "
     kinit -k bob@EXAMPLE.COM &>/dev/null;
     curl -X GET \
       --insecure \
