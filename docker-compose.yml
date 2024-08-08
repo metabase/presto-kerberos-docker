@@ -82,8 +82,6 @@ services:
 networks:
   example.com:
     name: example.com
-    # we need to reuse this network later on
-    external: true 
     driver: bridge
     ipam:
       config:
