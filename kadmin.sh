@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-docker-compose run \
+docker compose run \
   -e KRB5_TRACE=/dev/stderr \
   machine-example-com \
   kadmin \
